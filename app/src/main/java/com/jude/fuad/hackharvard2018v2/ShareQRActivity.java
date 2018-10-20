@@ -1,30 +1,24 @@
 package com.jude.fuad.hackharvard2018v2;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 
 public class ShareQRActivity extends AppCompatActivity {
     private String sharingString = "";
-    private String addedContact = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,42 +50,4 @@ public class ShareQRActivity extends AppCompatActivity {
         }
 
     }
-
-    /*public void addContact(View view) {
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-        integrator.setPrompt("Scan QR Code");
-        integrator.setCameraId(0);  // Use a specific camera of the device
-        integrator.initiateScan();
-    }
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        //retrieve scan result
-        //TextView tv = (TextView)findViewById(R.id.textView3);
-        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null) {
-            //we have a result
-            if(scanningResult.getContents() != null) {
-                addedContact = scanningResult.getContents().toString();
-                String[] myFriendsInfo = addedContact.split(",");
-
-                myFriends.add(addedFriend);
-
-                try {
-                    OutputStreamWriter writerTwo = new OutputStreamWriter(getApplicationContext().openFileOutput(
-                            "contactFile", Context.MODE_PRIVATE));
-                    for (int i = 0; i < myFriends.size(); i++) {
-                        writerTwo.write(myFriends.get(i) + '\n');
-                        System.out.println(myFriends.get(i) + '\n');
-                    }
-                    writerTwo.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(myIntent);
-            }
-        }
-    }*/
-
-
 }

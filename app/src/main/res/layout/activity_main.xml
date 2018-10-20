@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Test Three"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -28,5 +20,24 @@
         tools:layout_editor_absoluteX="286dp"
         tools:layout_editor_absoluteY="429dp"
         android:onClick="launchShareQR"/>
+
+    <ImageButton
+        android:id="@+id/addViaQRButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:onClick="launchAddQR"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/addViaQRButton"
+        android:layout_marginTop="27dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id = "@+id/contactList"/>
 
 </RelativeLayout>
