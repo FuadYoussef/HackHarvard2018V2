@@ -46,6 +46,9 @@
         <activity
             android:name=".AddQRActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".NFCTestActivity"
+            android:screenOrientation="portrait" />
 
 
 

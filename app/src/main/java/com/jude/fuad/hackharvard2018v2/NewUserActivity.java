@@ -25,9 +25,9 @@ public class NewUserActivity extends AppCompatActivity {
         try {
             writer = new OutputStreamWriter(getApplicationContext().openFileOutput(
                     "userInfo", Context.MODE_PRIVATE));
-            writer.write( nameEdit.getText().toString() + '\n');
-            writer.write( phoneEdit.getText().toString() + '\n');
-            writer.write( emailEdit.getText().toString() + '\n');
+            writer.write( "Name~"+nameEdit.getText().toString() + '\n');
+            writer.write( "Phone Number~" + phoneEdit.getText().toString() + '\n');
+            writer.write( "Email Address~" + emailEdit.getText().toString() + '\n');
             writer.close();
         } catch (java.io.IOException e) {
             e.printStackTrace();

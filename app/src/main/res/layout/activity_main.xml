@@ -40,4 +40,15 @@
         android:layout_marginRight="15dp"
         android:id = "@+id/contactList"/>
 
+    <ImageButton
+        android:id="@+id/NFCTestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="59dp"
+        android:layout_marginStart="147dp"
+        app:srcCompat="@android:drawable/ic_menu_send"
+        android:onClick="testNFC"/>
+
 </RelativeLayout>

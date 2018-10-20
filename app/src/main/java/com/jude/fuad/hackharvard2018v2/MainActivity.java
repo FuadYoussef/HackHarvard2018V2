@@ -72,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);*/
             }
         });
-
-
+    }
+    
+    public void testNFC(View view) {
+        Intent myIntent = new Intent(getApplicationContext(), NFCTestActivity.class);
+        startActivity(myIntent);
     }
 }
