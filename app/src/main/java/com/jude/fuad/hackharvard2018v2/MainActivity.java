@@ -1,10 +1,12 @@
 package com.jude.fuad.hackharvard2018v2;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -49,5 +51,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    public void launchShareQR(View view) {
+        Intent myIntent = new Intent(getApplicationContext(), ShareQRActivity.class);
+        startActivity(myIntent);
     }
 }

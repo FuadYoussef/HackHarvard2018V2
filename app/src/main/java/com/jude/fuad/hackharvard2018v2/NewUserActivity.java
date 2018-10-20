@@ -17,9 +17,9 @@ public class NewUserActivity extends AppCompatActivity {
         setContentView(R.layout.newuser_activity);
     }
     public void enterData(View view){
-        EditText nameEdit = (EditText) findViewById(R.id.NameInput);
-        EditText phoneEdit = (EditText) findViewById(R.id.PhoneNumberInput);
-        EditText emailEdit = (EditText) findViewById(R.id.EmailInput);
+        EditText nameEdit = findViewById(R.id.NameInput);
+        EditText phoneEdit = findViewById(R.id.PhoneNumberInput);
+        EditText emailEdit = findViewById(R.id.EmailInput);
 
         OutputStreamWriter writer = null;
         try {
