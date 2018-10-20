@@ -21,46 +21,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    NfcAdapter mNfcAdapter;
-    // Flag to indicate that Android Beam is available
-    boolean mAndroidBeamAvailable  = false;
     private ArrayList<String> myContacts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupListView();
-        // NFC isn't available on the device
-        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_NFC)) {
-            /*
-             * Disable NFC features here.
-             * For example, disable menu items or buttons that activate
-             * NFC-related features
-             */
-            // Android Beam file transfer isn't supported
-        } else if (Build.VERSION.SDK_INT <
-                Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            // If Android Beam isn't available, don't continue.
-            mAndroidBeamAvailable = false;
-            /*
-             * Disable Android Beam file transfer features here.
-             */
-
-            // Android Beam file transfer is available, continue
-        } else {
-            mAndroidBeamAvailable = true;
-            mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-
-        }
     }
-    public void readFileIn(String fileName) {
-        try {
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(openFileInput(fileName)));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+
     public void launchShareQR(View view) {
         Intent myIntent = new Intent(getApplicationContext(), ShareQRActivity.class);
         startActivity(myIntent);
