@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/NameInput"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:hint="Name" />
+
+    <EditText
+        android:id="@+id/EmailInput"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="250dp"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/PhoneNumberInput"
+        android:layout_width="264dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="178dp"
+        android:hint="Phone Number" />
+
+    <Button
+        android:id="@+id/enter_new_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="54dp"
+        android:layout_marginEnd="13dp"
+        android:onClick="enterData"
+        android:text="Enter" />
+
+
+</RelativeLayout>
