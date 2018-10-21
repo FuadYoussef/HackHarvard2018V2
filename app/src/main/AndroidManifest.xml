@@ -49,6 +49,9 @@
         <activity
             android:name=".NFCTestActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditInfoActivity"
+            android:screenOrientation="portrait" />
 
 
 
