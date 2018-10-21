@@ -135,6 +135,7 @@ public class EditInfoActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    finish();
                     startActivity(myIntent);
                 }
             }

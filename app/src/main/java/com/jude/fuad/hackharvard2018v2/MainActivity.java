@@ -30,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
         iv1.bringToFront();
         iv2.bringToFront();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        myContacts.clear();
+        setContentView(R.layout.activity_main);
+        setupListView();
+        ImageView iv1 = findViewById(R.id.addViaQRButton);
+        ImageView iv2 = findViewById(R.id.shareButton);
+        iv1.bringToFront();
+        iv2.bringToFront();
+    }
 
     public void launchShareQR(View view) {
         Intent myIntent = new Intent(getApplicationContext(), ShareQRActivity.class);
@@ -71,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(getApplicationContext(), FriendInfoActivity.class);
                 friendIndex = position;
+                finish();
                 startActivity(myIntent);
             }
         });
@@ -87,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void editInfo() {
         Intent myIntent = new Intent(getApplicationContext(), EditInfoActivity.class);
+        finish();
         startActivity(myIntent);
     }
     @Override
