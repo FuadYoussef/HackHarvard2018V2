@@ -52,6 +52,9 @@
         <activity
             android:name=".EditInfoActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".FriendInfoActivity"
+            android:screenOrientation="portrait" />
 
 
 

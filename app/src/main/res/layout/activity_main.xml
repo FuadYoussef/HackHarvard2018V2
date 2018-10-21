@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     >
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:text="Contacts:"
+        android:id="@+id/textId"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
     <ImageView
         android:id="@+id/shareButton"
@@ -21,9 +30,9 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="27dp"
-        android:layout_marginLeft="0dp"
+        android:layout_below="@+id/textId"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="15dp"
         android:layout_alignRight="@+id/addViaQRButton"
         android:layout_marginRight="15dp"
         android:id = "@+id/contactList"/>

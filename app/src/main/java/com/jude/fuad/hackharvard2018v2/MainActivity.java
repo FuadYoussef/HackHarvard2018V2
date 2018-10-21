@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -17,13 +18,17 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static int friendIndex;
     private ArrayList<String> myContacts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupListView();
+        ImageView iv1 = findViewById(R.id.addViaQRButton);
+        ImageView iv2 = findViewById(R.id.shareButton);
+        iv1.bringToFront();
+        iv2.bringToFront();
     }
 
     public void launchShareQR(View view) {
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         String[] myContactsNames = new String[myContacts.size()];
         for (int i = 0; i < myContacts.size(); i++) {
             String[] split =  myContacts.get(i).split("`");
-            myContactsNames[i] =split[1];
+            myContactsNames[i] =(split[1].split("~"))[1];
         }
         ListView listDays = findViewById(R.id.contactList);
         ArrayAdapter<String> arrayAdapter =
@@ -64,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*Intent myIntent = new Intent(getApplicationContext(), chatMenuActivity.class);
-                // finish();
-                startActivity(myIntent);*/
+                Intent myIntent = new Intent(getApplicationContext(), FriendInfoActivity.class);
+                friendIndex = position;
+                startActivity(myIntent);
             }
         });
     }
