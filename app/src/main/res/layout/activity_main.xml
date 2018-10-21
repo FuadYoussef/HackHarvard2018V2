@@ -4,51 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
 
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="46dp"
-        android:layout_marginEnd="46dp"
-        app:srcCompat="@android:drawable/ic_menu_share"
-        tools:layout_editor_absoluteX="286dp"
-        tools:layout_editor_absoluteY="429dp"
-        android:onClick="launchShareQR"/>
-
-    <ImageButton
-        android:id="@+id/addViaQRButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        android:onClick="launchAddQR"/>
+    <ImageView
+        android:id="@+id/shareButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/addViaQRButton"
+        android:onClick="launchShareQR"
+        android:src="@mipmap/sharebutton"
+        android:layout_above="@+id/addViaQRButton"
+        android:layout_marginBottom="10dp"/>
 
     <ListView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/addViaQRButton"
         android:layout_marginTop="27dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="0dp"
+        android:layout_alignRight="@+id/addViaQRButton"
         android:layout_marginRight="15dp"
         android:id = "@+id/contactList"/>
 
-    <ImageButton
-        android:id="@+id/NFCTestButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+
+    <ImageView
+        android:id="@+id/addViaQRButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="59dp"
-        android:layout_marginStart="147dp"
-        app:srcCompat="@android:drawable/ic_menu_send"
-        android:onClick="testNFC"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="18dp"
+        android:onClick="launchAddQR"
+        android:src="@mipmap/plusbutton" />
 
 </RelativeLayout>
