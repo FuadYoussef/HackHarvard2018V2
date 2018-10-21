@@ -2,45 +2,62 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+  <!--  <ListView
+        android:id="@+id/customlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="5dp"/>
+-->
 
 
     <EditText
         android:id="@+id/NameInput"
         android:layout_width="264dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:hint="Name" />
 
     <EditText
         android:id="@+id/EmailInput"
         android:layout_width="264dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="250dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/PhoneNumberInput"
+        android:layout_marginTop="60dp"
         android:hint="Email" />
 
     <EditText
         android:id="@+id/PhoneNumberInput"
         android:layout_width="264dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/NameInput"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="178dp"
+        android:layout_marginTop="60dp"
         android:hint="Phone Number" />
 
-    <Button
+    <ImageView
         android:id="@+id/enter_new_data_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/textView"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="54dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="70dp"
         android:onClick="enterData"
-        android:text="Enter" />
+        android:src="@mipmap/enterbutton" />
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentTop="true"
+      android:layout_marginTop="20dp"
+      android:text="Please Enter Your Information Below"
+      android:textSize="20dp"
+      android:layout_marginLeft="10dp"
+      android:textColor="#000000"/>
 
 
 </RelativeLayout>
