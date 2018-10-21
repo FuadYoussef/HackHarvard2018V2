@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(getApplicationContext(), FriendInfoActivity.class);
                 friendIndex = position;
-                finish();
+                //finish();
                 startActivity(myIntent);
             }
         });
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void editInfo() {
         Intent myIntent = new Intent(getApplicationContext(), EditInfoActivity.class);
-        finish();
+        //finish();
         startActivity(myIntent);
     }
     @Override

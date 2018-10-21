@@ -1,15 +1,21 @@
 package com.jude.fuad.hackharvard2018v2;
 
+import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,12 +24,17 @@ import java.util.ArrayList;
 
 public class FriendInfoActivity extends AppCompatActivity {
     private ArrayList<String> myContacts = new ArrayList<>();
+    private String DisplayName;
+    private String MobileNumber;
+    private String emailID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friendinfo_activity);
         setupListView();
+        ImageView iv1 = findViewById(R.id.addToContacts);
+        iv1.bringToFront();
     }
 
     public void setupListView() {
@@ -46,10 +57,18 @@ public class FriendInfoActivity extends AppCompatActivity {
         String[] valSplit = dataSplit[1].split("~");
         TextView tv = findViewById(R.id.nameText);
         tv.setText(valSplit[1]);
+        DisplayName = valSplit[1];
         ArrayList<String> al = new ArrayList<>();
         for(int i = 2; i < dataSplit.length; i++) {
             String[] vs = dataSplit[i].split("~");
             al.add(vs[0] + ": " + vs[1]);
+            if (i==2) {
+                MobileNumber = vs[1];
+            }
+            if (i==3) {
+                System.out.println(vs[1]);
+                emailID = vs[1];
+            }
         }
         String[] myContactsNames = new String[al.size()];
         for (int i = 0; i < al.size(); i++) {
@@ -96,5 +115,64 @@ public class FriendInfoActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public void addToContacts(View view) {
+        System.out.println("making new contact1");
+        System.out.println("Phone = " + MobileNumber);
+        System.out.println("Email = " + emailID );
+
+        ArrayList < ContentProviderOperation > ops = new ArrayList < ContentProviderOperation > ();
+
+        ops.add(ContentProviderOperation.newInsert(
+                ContactsContract.RawContacts.CONTENT_URI)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                .build());
+
+        //------------------------------------------------------ Names
+        if (DisplayName != null) {
+            ops.add(ContentProviderOperation.newInsert(
+                    ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE,
+                            ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                    .withValue(
+                            ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME,
+                            DisplayName).build());
+        }
+
+        //------------------------------------------------------ Mobile Number
+        if (MobileNumber != null) {
+            ops.add(ContentProviderOperation.
+                    newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE,
+                            ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, MobileNumber)
+                    .withValue(ContactsContract.CommonDataKinds.Phone.TYPE,
+                            ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                    .build());
+        }
+
+        //------------------------------------------------------ Email
+        if (emailID != null) {
+            ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                    .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                    .withValue(ContactsContract.Data.MIMETYPE,
+                            ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
+                    .withValue(ContactsContract.CommonDataKinds.Email.DATA, emailID)
+                    .withValue(ContactsContract.CommonDataKinds.Email.TYPE, ContactsContract.CommonDataKinds.Email.TYPE_WORK)
+                    .build());
+        }
+
+        // Asking the Contact provider to create a new contact
+        try {
+            getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+            Toast.makeText(this, "Contact Added",
+                    Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -19,13 +19,13 @@
 
     <ImageView
         android:id="@+id/shareButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_alignLeft="@+id/addViaQRButton"
         android:onClick="launchShareQR"
         android:src="@mipmap/sharebutton"
         android:layout_above="@+id/addViaQRButton"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <ListView
         android:layout_width="wrap_content"
@@ -41,8 +41,8 @@
 
     <ImageView
         android:id="@+id/addViaQRButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="28dp"
